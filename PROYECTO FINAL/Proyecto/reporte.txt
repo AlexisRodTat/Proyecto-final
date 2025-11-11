@@ -1,0 +1,54 @@
+TOKENS
+('IDENT', 'x', 1, 1)
+('ASSIGN', '=', 1, 3)
+('NUMBER', '10', 1, 5)
+('IDENT', 'y', 2, 1)
+('ASSIGN', '=', 2, 3)
+('STRING', '"hola"', 2, 5)
+('DEF', 'def', 4, 1)
+('IDENT', 'saludar', 4, 5)
+('LPAREN', '(', 4, 12)
+('RPAREN', ')', 4, 13)
+('COLON', ':', 4, 14)
+('IDENT', 'print', 5, 5)
+('LPAREN', '(', 5, 10)
+('IDENT', 'y', 5, 11)
+('RPAREN', ')', 5, 12)
+('CLASS', 'class', 7, 1)
+('IDENT', 'Persona', 7, 7)
+('COLON', ':', 7, 14)
+('PASS', 'pass', 8, 5)
+('IF', 'if', 10, 1)
+('TRUE', 'True', 10, 4)
+('COLON', ':', 10, 8)
+('IDENT', 'saludar', 11, 5)
+('LPAREN', '(', 11, 12)
+('RPAREN', ')', 11, 13)
+('WHILE', 'while', 13, 1)
+('FALSE', 'False', 13, 7)
+('COLON', ':', 13, 12)
+('IDENT', 'x', 14, 5)
+('ASSIGN', '=', 14, 7)
+('NUMBER', '5', 14, 9)
+
+AST
+('assign', 'x', ('value', '10', 'NUMBER', 1), 1)
+('assign', 'y', ('value', '"hola"', 'STRING', 2), 2)
+('function_def', 'saludar', [], [], 4)
+('call', 'print', ['y'], 5)
+('class_def', 'Persona', [], 7)
+('pass_stmt', None, 8)
+('if', ('value', 'True', 'TRUE', 10), 10)
+('call', 'saludar', [], 11)
+('while', ('value', 'False', 'FALSE', 13), 13)
+('assign', 'x', ('value', '5', 'NUMBER', 14), 14)
+
+TABLA DE SÍMBOLOS
+print -> {'kind': 'builtin', 'type': 'function', 'params': ['*args'], 'line': 0}
+x -> {'kind': 'var', 'type': 'int', 'line': 14, 'const': False, 'value': '5'}
+y -> {'kind': 'var', 'type': 'str', 'line': 2, 'const': False, 'value': '"hola"'}
+saludar -> {'kind': 'function', 'type': 'function', 'params': [], 'line': 4}
+Persona -> {'kind': 'class', 'type': 'class', 'methods': [], 'line': 7}
+
+ERRORES
+Ln 14: Símbolo 'x' ya definido en este scope
